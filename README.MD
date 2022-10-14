@@ -64,4 +64,3 @@ The player is allowed to choose who trades in what order.
 Simulation:
 
 The computer automatically determines an optimal transaction order.
-
