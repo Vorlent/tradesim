@@ -260,19 +260,4 @@ Hygene:
 Relationships:
 
 Self preservation instinct:
-
-
-1. Land
-
-1.1. Terrain
-
-1.2.
-
-1.3.
-
-
-2. Economic Agents
-
-3. Social Relations
-
-4. Economic Relations
+s

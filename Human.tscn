@@ -59,8 +59,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 8, 8 )
+[sub_resource type="CircleShape2D" id=11]
+radius = 6.0
 
 [node name="Human" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -77,3 +77,8 @@ frame = 2
 visible = false
 position = Vector2( 0, 12 )
 shape = SubResource( 11 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_path_changed"]

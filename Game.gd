@@ -2,6 +2,8 @@ extends Node2D
 
 
 onready var TerrainL1 : TileMap = $TerrainL1
+onready var line = $Line2D
+onready var human = $YSort/Human
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,3 +35,12 @@ func tilemap_to_data(tilemap : TileMap):
 		var cell = tilemap.get_cell(pos.x, pos.y)
 		#print("x: ", pos.x," y: ", pos.y, " cell ", cell)
 	pass
+
+
+func _on_Human_path_changed(path):
+	line.points = path
+	
+func _unhandled_input(event):
+	if event.is_action("navigation_target"):
+		if event is InputEventMouseButton:
+			human.set_target_location(event.position)
