@@ -19,30 +19,22 @@ onready var tiles = {
 }
 
 var object_tiles = {
-#	"tree": preload("res://Tree.tscn"),
+	"tree": preload("res://Tree.tscn")
 #	"cactus": preload("res://Cactus.tscn"),
 	#"spruce_tree": preload("res://Spruce_tree.tscn")
 }
 
 var biome_data = {
 	"plains": {"grass": 1},
-	"beach": {"sand": 0.99, "stone": 0.01}, 
-	"jungle": {"jungle_grass": 1},
-	"desert": {"sand": 0.98, "stone": 0.02}, 
 	"lake": {"water": 1},
 	"mountain": {"stone": 0.98, "grass":0.02},
-	"snow": {"snow": 0.97, "stone": 0.02, "grass": 0.02},
 	"ocean":{"water": 1}
 }
 
 var object_data = {
 	"plains": {"tree": 0.03},
-	"beach": {"tree": 0.01}, 
-	"jungle": {"tree": 0.04},
-	"desert": {"cactus": 0.03}, 
 	"lake": {},
-	"mountain": {"spruce_tree":0.02},
-	"snow": {"spruce_tree": 0.02},
+	"mountain": {"tree":0.02},
 	"ocean":{}
 }
 
@@ -90,7 +82,7 @@ func set_tile(width, height):
 	# trigger auto tiling
 	tilemap.update_bitmask_region()
 
-	#set_objects()
+	set_objects()
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):

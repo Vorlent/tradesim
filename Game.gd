@@ -17,12 +17,10 @@ func _ready():
 
 func create_2d_grid(w, h):
 	var grid = []
-
 	for x in range(w):
 		var col = []
 		col.resize(h)
 		grid.append(col)
-
 	return grid
 
 
@@ -43,4 +41,4 @@ func _on_Human_path_changed(path):
 func _unhandled_input(event):
 	if event.is_action("navigation_target"):
 		if event is InputEventMouseButton:
-			human.set_target_location(event.position)
+			human.set_target_location(get_global_mouse_position())
