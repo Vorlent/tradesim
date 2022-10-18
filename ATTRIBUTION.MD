@@ -17,7 +17,7 @@ Attribution #2
 
 Author: Seth Galbraith
 
-Title: Isometric 64x64 Outside Tileset
+Title: Isometric 64x64 Medieval Building Tileset
 
 Source: https://opengameart.org/content/isometric-64x64-medieval-building-tileset
 
@@ -32,7 +32,7 @@ Attribution #3
 
 Author: SketchyLogic
 
-Title: Isometric 64x64 Outside Tileset
+Title: Isometric Medieval City Sim Assets
 
 Source: https://opengameart.org/content/isometric-medieval-city-sim-assets
 
