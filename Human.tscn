@@ -66,16 +66,17 @@ radius = 6.0
 script = ExtResource( 2 )
 
 [node name="RightDown" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12 )
 frames = SubResource( 5 )
 
 [node name="RightUp" type="AnimatedSprite" parent="."]
 visible = false
+position = Vector2( 0, -12 )
 frames = SubResource( 10 )
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0, 12 )
 shape = SubResource( 11 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -9,5 +9,5 @@ region = Rect2( 128, 768, 64, 128 )
 [node name="Tree" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -4, -4 )
+position = Vector2( 0, -32 )
 texture = SubResource( 1 )
