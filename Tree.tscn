@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://iso-64x64-outside.png" type="Texture" id=1]
 
@@ -6,8 +6,15 @@
 atlas = ExtResource( 1 )
 region = Rect2( 128, 768, 64, 128 )
 
-[node name="Tree" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="Tree" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -32 )
 texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 14 )
+shape = SubResource( 2 )
