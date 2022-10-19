@@ -59,7 +59,7 @@ Source: https://opengameart.org/content/farming-crops-16x16
 CC0 https://creativecommons.org/publicdomain/zero/1.0/ https://creativecommons.org/publicdomain/zero/1.0/legalcode
 
 Files:
-iso-64x64-outside.png
+crop_spritesheet.png
 
 Modifications: No modifications were made.
 

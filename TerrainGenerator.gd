@@ -29,7 +29,10 @@ func init_tiles(tilemap : TileMap):
 	}
 
 var object_tiles = {
-	"tree": preload("res://Tree.tscn")
+	"tree": preload("res://Tree.tscn"),
+	"rock": preload("res://Rock.tscn"),
+	"bush": preload("res://Bush.tscn"),
+	"crop": preload("res://Crop.tscn")
 }
 
 var biome_data = {
@@ -40,7 +43,7 @@ var biome_data = {
 }
 
 var object_data = {
-	"plains": { "tree": 0.03 },
+	"plains": { "tree": 0.03, "rock": 0.01, "bush": 0.02, "crop": 0.01 },
 	"lake": {},
 	"mountain": { "tree": 0.02 },
 	"ocean": {}
