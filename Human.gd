@@ -1,24 +1,24 @@
 extends KinematicBody2D
 
+const WalkingSprite = preload("res://WalkingSprite.gd")
+
 signal target_reached
 signal path_changed(path)
 
 export (int) var MAX_SPEED = 100
 
 var velocity = Vector2()
-
-onready var up_sprite = $RightUp
-onready var down_sprite = $RightDown
-
 onready var navigation_agent = $NavigationAgent2D
-
-onready var active_sprite : AnimatedSprite = $RightUp
+var walking_sprite : WalkingSprite
 
 var did_arrive : bool = true
 
 func set_target_location(target: Vector2) -> void:
 	did_arrive = false
 	navigation_agent.set_target_location(target)
+	
+func _ready():
+	walking_sprite = WalkingSprite.new(self, $RightUp, $RightDown)
 
 func _arrived_at_location() -> bool:
 	return navigation_agent.is_navigation_finished()
@@ -54,38 +54,14 @@ func _physics_process(delta):
 	navigation_agent.set_velocity(velocity)
 
 	if not _arrived_at_location():
-		# set animation based on motion
-		var old_sprite : AnimatedSprite = active_sprite
-		if velocity.y < 0: # up
-			active_sprite = up_sprite
-		elif velocity.y > 0: # down
-			active_sprite = down_sprite
-		# else: idle
-		
-		old_sprite.hide()
-		active_sprite.show()
-			
-		if velocity.x < 0: # left
-			active_sprite.flip_h = 1
-			active_sprite.play()
-		elif velocity.x > 0: # right
-			active_sprite.flip_h = 0
-			active_sprite.play()
-		else: # idle
-			active_sprite.stop()
-			active_sprite.frame = 0
-		
-		if active_sprite != old_sprite:
-			old_sprite.stop()
-			
+		walking_sprite.start_walking()
 		velocity = move_and_slide(velocity)
 	elif not did_arrive:
 		did_arrive = true
 		emit_signal("path_changed", [])
 		emit_signal("target_reached")
 		
-		active_sprite.stop()
-		active_sprite.frame = 0
+		walking_sprite.stop_walking()
 	
 func _on_NavigationAgent2D_path_changed():
 	emit_signal("path_changed", navigation_agent.get_nav_path())
