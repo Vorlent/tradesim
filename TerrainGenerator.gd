@@ -86,8 +86,8 @@ func generate_tilemap():
 			#tilemap.set_cellv(pos, tiles[random_tile(biome_data, biome[pos])])
 			
 	# trigger auto tiling
-	tilemap.update_bitmask_region()
-	tilemap.update_dirty_quadrants()
+	#tilemap.update_bitmask_region()
+	#tilemap.update_dirty_quadrants()
 
 func between(val, start, end):
 	if start <= val and val < end:

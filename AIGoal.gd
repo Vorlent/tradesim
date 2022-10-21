@@ -40,7 +40,7 @@ func process_ai(human):
 			return
 			
 		var move_direction = human.position.direction_to(navigation_agent.get_next_location())
-		human.velocity = move_direction * human.MAX_SPEED
+		human.velocity = move_direction * min(2 * navigation_agent.distance_to_target(), human.MAX_SPEED)
 		navigation_agent.set_velocity(human.velocity)
 
 		if not _arrived_at_location():
