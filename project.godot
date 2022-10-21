@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Object",
+"class": "AIGoal",
+"language": "GDScript",
+"path": "res://AIGoal.gd"
+} ]
+_global_script_class_icons={
+"AIGoal": ""
+}
+
 [application]
 
 config/name="tradesim"

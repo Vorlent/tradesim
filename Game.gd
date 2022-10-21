@@ -46,5 +46,5 @@ func _on_Human_path_changed(path):
 func _input(event):
 	if event.is_action("navigation_target"):
 		if event is InputEventMouseButton:
-			human.set_target_location(get_global_mouse_position())
+			human.walk_to(get_global_mouse_position())
 			

@@ -1,4 +1,4 @@
-extends Node2D
+extends Object
 
 export var width  = 50
 export var height  = 50

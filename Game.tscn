@@ -21,6 +21,7 @@ tile_data = PoolIntArray( 0, 74, 9, 1, 74, 8, 2, 74, 8, 3, 74, 8, 4, 74, 8, 5, 7
 
 [node name="Human" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 480, 1097 )
+MAX_SPEED = 100
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0

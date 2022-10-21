@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const WalkingSprite = preload("res://WalkingSprite.gd")
+const AIGoal = preload("res://AIGoal.gd")
 
 signal target_reached
 signal path_changed(path)
@@ -13,15 +14,13 @@ var walking_sprite : WalkingSprite
 
 var did_arrive : bool = true
 
-func set_target_location(target: Vector2) -> void:
-	did_arrive = false
-	navigation_agent.set_target_location(target)
+var ai_goal : AIGoal = AIGoal.new().wait_goal()
+
+func walk_to(target: Vector2) -> void:
+	ai_goal = AIGoal.new().walk_goal(navigation_agent, target)
 	
 func _ready():
 	walking_sprite = WalkingSprite.new(self, $RightUp, $RightDown)
-
-func _arrived_at_location() -> bool:
-	return navigation_agent.is_navigation_finished()
 
 func get_input():
 	velocity = Vector2()
@@ -45,23 +44,8 @@ func get_input():
 func _physics_process(delta):
 	if not visible:
 		return
-	
-	if did_arrive:
-		return
 		
-	var move_direction = position.direction_to(navigation_agent.get_next_location())
-	velocity = move_direction * MAX_SPEED
-	navigation_agent.set_velocity(velocity)
-
-	if not _arrived_at_location():
-		walking_sprite.start_walking()
-		velocity = move_and_slide(velocity)
-	elif not did_arrive:
-		did_arrive = true
-		emit_signal("path_changed", [])
-		emit_signal("target_reached")
-		
-		walking_sprite.stop_walking()
+	ai_goal.process_ai(self)
 	
 func _on_NavigationAgent2D_path_changed():
 	emit_signal("path_changed", navigation_agent.get_nav_path())
