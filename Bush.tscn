@@ -18,5 +18,5 @@ radius = 115.05
 polygon = PoolVector2Array( -10, -10, -10, 10, 10, 10, 10, -10 )
 
 [node name="NavigationPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, -10, -10, 10, 17, 10, 17, -10 )
+polygon = PoolVector2Array( -10, -10, -10, 10, 10, 10, 10, -10 )
 disabled = true
