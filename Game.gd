@@ -6,6 +6,7 @@ onready var TerrainL1 : TileMap = $TerrainL1
 onready var line = $Line2D
 onready var human = $YSort/Human
 onready var camera = $Camera2D
+onready var navigation_polygon = $NavigationPolygonInstance.navpoly
 
 var generator
 
@@ -15,7 +16,7 @@ func _ready():
 	_proc_generation()
 
 func _proc_generation():
-	generator = TerrainGenerator.new(TerrainL1, $YSort)
+	generator = TerrainGenerator.new(TerrainL1, navigation_polygon, $YSort)
 	generator.temperature = generator.generate_map(300, 5)
 	generator.moisture = generator.generate_map(300, 5)
 	generator.altitude = generator.generate_map(150, 5)
