@@ -10,12 +10,18 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Object",
-"class": "AIGoal",
+"class": "AIAction",
 "language": "GDScript",
-"path": "res://AIGoal.gd"
+"path": "res://AIAction.gd"
+}, {
+"base": "Object",
+"class": "AIPlanNode",
+"language": "GDScript",
+"path": "res://AIPlanNode.gd"
 } ]
 _global_script_class_icons={
-"AIGoal": ""
+"AIAction": "",
+"AIPlanNode": ""
 }
 
 [application]

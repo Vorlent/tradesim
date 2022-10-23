@@ -17,7 +17,7 @@ var object_container
 var negative_polygon : Array = []
 
 # Constructor
-func _init(tilemap : TileMap, navpoly: NavigationPolygon, object_container):
+func _init(tilemap : TileMap, navpoly : NavigationPolygon, object_container):
 	self.tilemap = tilemap
 	self.object_container = object_container
 	self.openSimplexNoise = OpenSimplexNoise.new()
@@ -166,13 +166,11 @@ func generate_tilemap():
 			
 			edgeLine2D.add_point(outline[i])
 			edgeLine2D.add_point(outline[i+1])
-			object_container.add_child(edgeLine2D)
+			object_container.spawn_object(edgeLine2D)
 			next_color += 1
 	navpoly.make_polygons_from_outlines()
 	# trigger auto tiling
 	# tilemap.update_bitmask_region()
-	# update nav mesh
-	# tilemap.update_dirty_quadrants()
 	
 func tile_step(start, end) -> Vector2: 
 	return tilemap.world_to_map(start) - tilemap.world_to_map(end)
@@ -189,10 +187,10 @@ func random_tile(data, biome):
 	var rand_num = rand_range(0,1)
 	var running_total = 0
 	for tile in current_biome:
-		running_total = running_total+current_biome[tile]
+		running_total = running_total + current_biome[tile]
 		if rand_num <= running_total:
 			return tile
-				
+
 func set_objects():
 	objects = {}
 	negative_polygon = []
@@ -222,7 +220,7 @@ func set_objects():
 func tile_to_scene(random_object, pos):
 	var instance = object_tiles[str(random_object)].instance()
 	instance.position = tilemap.map_to_world(pos) + Vector2(4, 4)
-	object_container.add_child(instance)
+	object_container.spawn_object(instance)
 	
 	var collision_polygon : CollisionPolygon2D = instance.find_node("NavigationPolygon2D")
 	if collision_polygon:
@@ -233,8 +231,4 @@ func tile_to_scene(random_object, pos):
 		
 		for vertex in collision_polygon.polygon:
 			transformed_polygon.append(polygon_transform.xform(vertex))
-			
-		#navpoly.add_outline(transformed_polygon)
 		negative_polygon.append(transformed_polygon)
-		
-		
