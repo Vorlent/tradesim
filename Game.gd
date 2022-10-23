@@ -1,6 +1,6 @@
 extends Node2D
 
-const TerrainGenerator = preload("res://TerrainGenerator.gd")
+const TerrainGenerator = preload("res://terrain/TerrainGenerator.gd")
 
 onready var TerrainL1 : TileMap = $TerrainL1
 onready var line = $Line2D

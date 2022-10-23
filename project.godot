@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "AIAction",
 "language": "GDScript",
-"path": "res://AIAction.gd"
+"path": "res://ai/AIAction.gd"
 }, {
 "base": "Object",
 "class": "AIPlanNode",
 "language": "GDScript",
-"path": "res://AIPlanNode.gd"
+"path": "res://ai/AIPlanNode.gd"
 } ]
 _global_script_class_icons={
 "AIAction": "",
@@ -28,7 +28,6 @@ _global_script_class_icons={
 
 config/name="tradesim"
 run/main_scene="res://Game.tscn"
-config/icon="res://icon.png"
 
 [gui]
 

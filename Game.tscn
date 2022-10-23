@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://TileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://terrain/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
-[ext_resource path="res://Human.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ai/Human.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -159, 433, -192, 418, -95, 370, -415, 1329, -447, 1314, -414, 1298, -415, 1233, -447, 1217, -415, 1202, -254, 737, -286, 721, -254, 706, -318, 897, -351, 881, -287, 850, -415, 1137, -479, 1105, -448, 1090, -448, 1056, -479, 1041, -447, 1025, 1, 1601, -446, 1377, -415, 1362, -447, 993, -479, 977, 321, 161, 1602, 802, 33, 306, -97, 562, -223, 497, -192, 482, -128, 353, 1, 289, -446, 1281, -415, 1266, -288, 785, -318, 770, -416, 1169, -447, 1153, -447, 1345, -447, 1249, -318, 833, -287, 818, -478, 1009, -447, 1185, -319, 801, -223, 465, -285, 689, -159, 625, -126, 642, -95, 593, -125, 577, -96, 625, -125, 609, -478, 1073 )

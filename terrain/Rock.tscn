@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/iso-64x64-outside.png-6d92482754425efaeab5c3f1b3394b4e.stex"
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = SubResource( 2 )
+region = Rect2( 0, 448, 64, 64 )
+
+[node name="Rock" type="KinematicBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -15, 7, -16, 11, -15, 15, -11, 19, -3, 20, 4, 19, 8, 15, 9, 11, 8, 7, 4, 3, -3, 2, -11, 3 )
+
+[node name="NavigationPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -15, 7, -15, 15, -11, 19, 4, 19, 8, 15, 8, 7, 4, 3, -11, 3 )
+disabled = true
