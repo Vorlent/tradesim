@@ -1,6 +1,6 @@
 extends "res://ai/AIAction.gd"
 
-class_name GatherWoodAction
+class_name GatherCropAction
 
 const Tree = preload("res://terrain/Tree.gd")
 
@@ -12,8 +12,8 @@ var gathering_duration : float = 2
 var inv_text = ""
 
 func _init():
-	add_effect("has_wood", true)
-	cost = 10.0
+	add_effect("has_crop", true)
+	cost = 9.0
 
 func reset():
 	.reset()
@@ -31,9 +31,9 @@ func check_procedural_precondition(agent) -> bool:
 	var closest_distance : float = 99999999.0
 	var closest_object = null
 	for object in agent.game.object_container.get_children():
-		if object is Tree:
+		if object is Crop:
 			var distance = agent.position.distance_squared_to(object.position)
-			if distance > 500*500 and distance < closest_distance:
+			if distance > 500*0 and distance < closest_distance:
 				closest_distance = distance
 				closest_object = object
 	if closest_object:
@@ -52,14 +52,14 @@ func perform_action(agent, delta) -> bool:
 		progress = 100.0
 		add_item(agent)
 	
-	agent.ai_label.text = "Gathering Wood " + Units.format_percentage(progress) + " " + inv_text
+	agent.ai_label.text = "Gathering Crop " + Units.format_percentage(progress) + " " + inv_text
 	# do mining
 	return true
 
 func add_item(agent):
-	var item_type = G.Items(agent).OAK_LOG
-	var wood_item_stack = ItemStack.new(item_type, 1)
-	agent.left_hand_item_slot.put_itemstack(wood_item_stack)
+	var item_type = G.Items(agent).CROP_CORN
+	var crop_item_stack = ItemStack.new(item_type, 1)
+	agent.left_hand_item_slot.put_itemstack(crop_item_stack)
 	inv_text = str(agent.left_hand_item_slot)
 
 func _to_string():

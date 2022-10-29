@@ -10,6 +10,12 @@ func _init(item : Item, amount : int):
 	self.item_type = item
 	self.current_amount = amount
 
+func add_amount(amount):
+	self.amount += amount
+
+func remove_amount(amount):
+	self.amount -= amount
+
 func current_weight() -> float:
 	return item_type.weight * current_amount
 	

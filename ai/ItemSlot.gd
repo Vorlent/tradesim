@@ -23,11 +23,15 @@ func _init(amount, weight, volume):
 func put_itemstack(new_item_stack) -> bool:
 	if item_stack != null:
 		if item_stack.item_type != new_item_stack.item_type:
+			print("item mismatch")
 			return false
 			
 		if item_stack.current_amount + new_item_stack.current_amount > max_amount \
 			or item_stack.current_weight() + new_item_stack.current_weight() > max_weight \
 			or item_stack.current_volume() + new_item_stack.current_volume() > max_volume:
+			print(item_stack.current_amount, " + ", new_item_stack.current_amount, " > ", max_amount)
+			print(item_stack.current_weight(), " + ", new_item_stack.current_weight(), " > ", max_weight)
+			print(item_stack.current_volume(), " + ", new_item_stack.current_volume(), " > ", max_volume)
 			return false
 	
 	if item_stack == null:

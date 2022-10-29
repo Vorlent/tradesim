@@ -26,14 +26,17 @@ var right_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
 
 onready var available_actions : Array = [
 	# WalkingAction.new(navigation_agent, Vector2(350, 350)),
-	GatherWoodAction.new()
+	GatherWoodAction.new(),
+	GatherCropAction.new()
 ]
 
 func walk_to(_target: Vector2) -> void:
-	available_actions = [
-		# WalkingAction.new(navigation_agent, target),
-		GatherWoodAction.new()
-	]
+	#available_actions = [
+	#	WalkingAction.new(navigation_agent, target),
+	#	GatherWoodAction.new()
+	#]
+	ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true, "has_crop": true})
+	ai_plan_index = 0
 	
 func _ready():
 	walking_sprite = WalkingSprite.new(self, $RightUp, $RightDown)
@@ -61,10 +64,11 @@ func _process(delta):
 	# generate plan
 	
 	if ai_plan_index == -1:
-		print("available actions ", available_actions)
-		ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true})
+		#print("available actions ", available_actions)
+		ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true, "has_crop": true})
 		ai_plan_index = 0
-		print("generated plan: ", ai_plan)
+		#print("generated plan: ", ai_plan)
+		pass
 	else:
 		if ai_plan_index < ai_plan.size():
 			var action = ai_plan[ai_plan_index]

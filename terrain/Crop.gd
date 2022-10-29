@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Crop
+
 onready var sprite_container = $SpriteContainer
 
 # Called when the node enters the scene tree for the first time.

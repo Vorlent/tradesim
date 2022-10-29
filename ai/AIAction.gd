@@ -21,19 +21,12 @@ var g : Node # reference to autoload
 func wait_goal():
 	return self
 
-func gather_goal(navigation_agent : NavigationAgent2D, position : Vector2):
-	self.navigation_agent = navigation_agent
-	navigation_agent.set_target_location(position)
-	target_position = position
-	target_in_range = false
-	return self
-
 # Constructor
 func _init():
 	pass
 
 func reset():
-	pass
+	target_in_range = false
 
 func perform_action(_human, _delta):
 	pass

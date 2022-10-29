@@ -93,3 +93,6 @@ polygon = PoolVector2Array( -4, 1, -5, 4, -5, 5, -4, 8, -1, 9, 1, 9, 5, 8, 6, 5,
 [node name="NavigationPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -6, -1, -6, 10, 7, 10, 7, -1 )
 disabled = true
+
+[node name="NavigationDestination" type="Node2D" parent="."]
+position = Vector2( 0, 12 )

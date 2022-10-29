@@ -30,4 +30,7 @@ polygon = PoolVector2Array( -6, 8, -7, 14, -6, 19, 0, 20, 6, 19, 7, 13.4109, 6, 
 polygon = PoolVector2Array( -7, 7, -7, 20, 7, 20, 7, 7 )
 disabled = true
 
+[node name="NavigationDestination" type="Node2D" parent="."]
+position = Vector2( 0, 25 )
+
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

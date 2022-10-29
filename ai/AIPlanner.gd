@@ -45,6 +45,7 @@ static func build_graph(parent : AIPlanNode, leaves : Array, usable_actions : Di
 	var found_one : bool = false
 	for action in usable_actions.keys(): # Process all usable actions
 		if subset_of(action.preconditions, parent.state):
+			print(action)
 			var current_state : Dictionary = populate_state(parent.state, {}, action.effects)
 			var node : AIPlanNode = AIPlanNode.new(parent, parent.running_cost + action.cost, current_state, action)
 			if subset_of(goal, current_state): # goal has been satisfied by current state
