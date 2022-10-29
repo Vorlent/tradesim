@@ -1,7 +1,5 @@
 extends Node2D
 
-const TerrainGenerator = preload("res://terrain/TerrainGenerator.gd")
-
 onready var TerrainL1 : TileMap = $TerrainL1
 onready var line = $Line2D
 onready var human = $YSort/Human
@@ -13,6 +11,7 @@ var generator
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	human.game = self
 	camera.position = human.position
 	_proc_generation()
 

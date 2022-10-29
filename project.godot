@@ -9,25 +9,101 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
+"base": "Reference",
 "class": "AIAction",
 "language": "GDScript",
 "path": "res://ai/AIAction.gd"
 }, {
-"base": "Object",
+"base": "Reference",
 "class": "AIPlanNode",
 "language": "GDScript",
 "path": "res://ai/AIPlanNode.gd"
+}, {
+"base": "Reference",
+"class": "AIPlanner",
+"language": "GDScript",
+"path": "res://ai/AIPlanner.gd"
+}, {
+"base": "Node",
+"class": "G",
+"language": "GDScript",
+"path": "res://G.gd"
+}, {
+"base": "Reference",
+"class": "GatherWoodAction",
+"language": "GDScript",
+"path": "res://ai/GatherWoodAction.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Human",
+"language": "GDScript",
+"path": "res://ai/Human.gd"
+}, {
+"base": "Reference",
+"class": "Item",
+"language": "GDScript",
+"path": "res://ai/Item.gd"
+}, {
+"base": "Reference",
+"class": "ItemSlot",
+"language": "GDScript",
+"path": "res://ai/ItemSlot.gd"
+}, {
+"base": "Reference",
+"class": "ItemStack",
+"language": "GDScript",
+"path": "res://ai/ItemStack.gd"
+}, {
+"base": "Object",
+"class": "MiningAction",
+"language": "GDScript",
+"path": "res://ai/MiningAction.gd"
+}, {
+"base": "Reference",
+"class": "TerrainGenerator",
+"language": "GDScript",
+"path": "res://terrain/TerrainGenerator.gd"
+}, {
+"base": "Object",
+"class": "Units",
+"language": "GDScript",
+"path": "res://ai/Units.gd"
+}, {
+"base": "Object",
+"class": "WalkingAction",
+"language": "GDScript",
+"path": "res://ai/WalkingAction.gd"
+}, {
+"base": "Node",
+"class": "WalkingSprite",
+"language": "GDScript",
+"path": "res://ai/WalkingSprite.gd"
 } ]
 _global_script_class_icons={
 "AIAction": "",
-"AIPlanNode": ""
+"AIPlanNode": "",
+"AIPlanner": "",
+"G": "",
+"GatherWoodAction": "",
+"Human": "",
+"Item": "",
+"ItemSlot": "",
+"ItemStack": "",
+"MiningAction": "",
+"TerrainGenerator": "",
+"Units": "",
+"WalkingAction": "",
+"WalkingSprite": ""
 }
 
 [application]
 
 config/name="tradesim"
 run/main_scene="res://Game.tscn"
+
+[autoload]
+
+Items="*res://ai/Items.gd"
 
 [gui]
 

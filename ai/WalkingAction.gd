@@ -1,21 +1,21 @@
 extends "res://ai/AIAction.gd"
 
+class_name WalkingAction
+
 # walk_goal specific
 var navigation_agent : NavigationAgent2D
 var did_arrive : bool
 var walking_sprite
 
 # Constructor
-func _init(navigation_agent : NavigationAgent2D, position : Vector2):
+func _init(navigation_agent_ : NavigationAgent2D, position : Vector2):
 	add_effect("walked", true) 
-	self.navigation_agent = navigation_agent
-	position.x = 350
-	position.y = 350
+	navigation_agent = navigation_agent_
 	navigation_agent.set_target_location(position)
 	did_arrive = false
 	return self
 
-func perform_action(human):
+func perform_action(human, _delta):
 	if did_arrive:
 		return true
 		

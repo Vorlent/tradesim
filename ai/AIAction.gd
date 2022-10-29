@@ -1,4 +1,4 @@
-extends Object
+extends Reference
 
 class_name AIAction
 
@@ -11,34 +11,46 @@ enum HumanTaskType {
 
 var preconditions : Dictionary = {}
 var effects : Dictionary = {}
-var cost : float = 1.0
+var cost : float = 100.0
 
-var goal_type
-var goal_position : Vector2
+var target_position : Vector2
+var target_in_range : bool = false
 var goal_finished : bool
+var g : Node # reference to autoload
 
 func wait_goal():
-	goal_type = HumanTaskType.HUMAN_WAIT
 	return self
 
 func gather_goal(navigation_agent : NavigationAgent2D, position : Vector2):
-	goal_type = HumanTaskType.HUMAN_GATHER
 	self.navigation_agent = navigation_agent
 	navigation_agent.set_target_location(position)
-	goal_position = position
+	target_position = position
+	target_in_range = false
 	return self
 
 # Constructor
 func _init():
 	pass
 
-func perform_action(human):
+func reset():
 	pass
+
+func perform_action(_human, _delta):
+	pass
+	
+func get_target_position():
+	return target_position
+
+func in_range(_agent_position : Vector2) -> bool:
+	return target_in_range
+
+func set_in_range():
+	target_in_range = true
 
 func is_done() -> bool:
 	return false
 
-func check_procedural_precondition(agent) -> bool:
+func check_procedural_precondition(_agent) -> bool:
 	return true
 
 # value = true means the effect must be present
@@ -47,7 +59,7 @@ func add_precondition(precondition : String, value):
 	preconditions[precondition] = value
 
 func remove_precondition(precondition : String):
-	preconditions.erase(precondition)
+	var _u = preconditions.erase(precondition)
 
 # value = true means the effect will be added to the current state
 # value = false means the effect will be removed from the current state
@@ -55,4 +67,4 @@ func add_effect(effect : String, value):
 	effects[effect] = value
 
 func remove_effect(effect : String):
-	effects.erase(effect)
+	var _u = effects.erase(effect)

@@ -1,4 +1,6 @@
-extends Object
+extends Reference
+
+class_name TerrainGenerator
 
 export var width  = 50
 export var height  = 50
@@ -17,19 +19,19 @@ var object_container
 var negative_polygon : Array = []
 
 # Constructor
-func _init(tilemap : TileMap, navpoly : NavigationPolygon, object_container):
-	self.tilemap = tilemap
-	self.object_container = object_container
+func _init(tilemap_ : TileMap, navpoly_ : NavigationPolygon, object_container_):
+	self.tilemap = tilemap_
+	self.object_container = object_container_
 	self.openSimplexNoise = OpenSimplexNoise.new()
-	self.navpoly = navpoly
-	init_tiles(tilemap)
+	self.navpoly = navpoly_
+	init_tiles(tilemap_)
 
-func init_tiles(tilemap : TileMap):
+func init_tiles(tilemap_ : TileMap):
 	tiles = {
-		"grass": tilemap.tile_set.find_tile_by_name("generic_dirt"),
-		"sand": tilemap.tile_set.find_tile_by_name("sand"),
-		"water": tilemap.tile_set.find_tile_by_name("water"),
-		"stone": tilemap.tile_set.find_tile_by_name("stone")
+		"grass": tilemap_.tile_set.find_tile_by_name("generic_dirt"),
+		"sand": tilemap_.tile_set.find_tile_by_name("sand"),
+		"water": tilemap_.tile_set.find_tile_by_name("water"),
+		"stone": tilemap_.tile_set.find_tile_by_name("stone")
 	}
 
 var object_tiles = {
@@ -63,7 +65,7 @@ func generate_map(per, oct):
 			gridName[Vector2(x,y)] = 2*(abs(openSimplexNoise.get_noise_2d(x,y)))
 	return gridName
 	
-func get_biome(alt : float, temp : float, moist : float) -> String:
+func get_biome(alt : float, _temp : float, moist : float) -> String:
 	#Ocean
 	if alt < 0.25:
 		return "ocean"
@@ -131,14 +133,14 @@ func generate_tilemap():
 		var start : Vector2 = edge_by_start.keys().front()
 		var outline : PoolVector2Array = PoolVector2Array([start])
 		var current : Vector2 = edge_by_start[start]
-		edge_by_start.erase(start)
+		var _u = edge_by_start.erase(start)
 		var previous : Vector2 = start
 		
 		while current and current != start:
 			var next = edge_by_start[current]
 			if tile_step(previous, current) != tile_step(current, next):
 				outline.append(current)
-			edge_by_start.erase(current)
+			var _u2 = edge_by_start.erase(current)
 			previous = current
 			current = next
 		
@@ -182,8 +184,8 @@ func between(val, start, end):
 	if start <= val and val < end:
 		return true
 
-func random_tile(data, biome):
-	var current_biome = data[biome]
+func random_tile(data, biome_):
+	var current_biome = data[biome_]
 	var rand_num = rand_range(0,1)
 	var running_total = 0
 	for tile in current_biome:
@@ -224,10 +226,8 @@ func tile_to_scene(random_object, pos):
 	
 	var collision_polygon : CollisionPolygon2D = instance.find_node("NavigationPolygon2D")
 	if collision_polygon:
-		var deleted_polygons : Array = []
 		var polygon_transform = instance.get_global_transform()
 		var transformed_polygon = PoolVector2Array([])
-		var scale : float = 2.0
 		
 		for vertex in collision_polygon.polygon:
 			transformed_polygon.append(polygon_transform.xform(vertex))

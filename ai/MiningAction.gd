@@ -1,5 +1,7 @@
 extends "res://ai/AIAction.gd"
 
+class_name MiningAction
+
 var mined : bool = false
 var targetRock #: IronRockComponent
  
@@ -26,6 +28,6 @@ func check_procedural_precondition(agent) -> bool:
 	# find a suitable rock to mine
 	return true
  
-func perform_action(agent) -> bool:
+func perform_action(agent, delta) -> bool:
 	# do mining
 	return true

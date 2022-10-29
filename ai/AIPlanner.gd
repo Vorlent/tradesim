@@ -1,6 +1,6 @@
-extends Object
+extends Reference
 
-const AIPlanNode = preload("res://ai/AIPlanNode.gd")
+class_name AIPlanner
 
 # Generate a sequence of AI actions
 static func plan(agent, available_actions, world_state, goal) -> Array:
@@ -13,7 +13,6 @@ static func plan(agent, available_actions, world_state, goal) -> Array:
 
 	var leaves : Array = []
 	var start : AIPlanNode = AIPlanNode.new(null, 0, world_state, null)
-	var end : Dictionary = world_state
 	var success : bool = build_graph(start, leaves, usable_actions, goal)
 	#print("leaves ", leaves, " success ", success)
 
@@ -45,26 +44,15 @@ static func plan(agent, available_actions, world_state, goal) -> Array:
 static func build_graph(parent : AIPlanNode, leaves : Array, usable_actions : Dictionary, goal : Dictionary):
 	var found_one : bool = false
 	for action in usable_actions.keys(): # Process all usable actions
-		#print("action: ", action)
-		# Check if the current action's preconditions are being met by the parent state
-		#print("subset_of(",action.preconditions,", ",parent.state,") = ", subset_of(action.preconditions, parent.state))
 		if subset_of(action.preconditions, parent.state):
-			# apply the action's effects to the parent state
-			#print("parent.state: ", parent.state)
 			var current_state : Dictionary = populate_state(parent.state, {}, action.effects)
-			#print("current_state ", current_state)
-			#print("populate_state(", parent.state,", {}, ", action.effects, ") = ",
-			#	populate_state(parent.state, {}, action.effects), " = ", current_state
-			#)
-			current_state = populate_state(parent.state, {}, action.effects)
 			var node : AIPlanNode = AIPlanNode.new(parent, parent.running_cost + action.cost, current_state, action)
-			# print("subset_of(", goal, ", ", current_state, ") = ", subset_of(goal, current_state))
 			if subset_of(goal, current_state): # goal has been satisfied by current state
 				leaves.append(node)
 				found_one = true
 			else: # goal has not been satisfied yet, build another subtree
 				var subset : Dictionary = usable_actions.duplicate()
-				subset.erase(action)
+				var _u = subset.erase(action)
 				if build_graph(node, leaves, subset, goal):
 					found_one = true
 	return found_one
@@ -83,7 +71,7 @@ static func populate_state(current_state : Dictionary, state_remove : Dictionary
 	# remove old states
 	for change in state_remove.keys():
 		if state.has(change):
-			state.erase(change)
+			var _u = state.erase(change)
 
 	# add new states
 	for change in state_add.keys():

@@ -1,9 +1,6 @@
 extends KinematicBody2D
 
-const WalkingSprite = preload("res://ai/WalkingSprite.gd")
-const AIAction = preload("res://ai/AIAction.gd")
-const WalkingAction = preload("res://ai/WalkingAction.gd")
-const AIPlanner = preload("res://ai/AIPlanner.gd")
+class_name Human
 
 signal target_reached
 signal path_changed(path)
@@ -12,22 +9,30 @@ export (int) var MAX_SPEED = 100
 
 var velocity = Vector2()
 onready var navigation_agent = $NavigationAgent2D
+onready var ai_label : Label = $AILabel
 var walking_sprite : WalkingSprite
 
 var did_arrive : bool = true
 
-var ai_goal : AIAction = AIAction.new().wait_goal()
+var walking_action : WalkingAction
 
 var ai_plan : Array = []
 var ai_plan_index : int = -1
 
+var game # reference to the main scene
+
+var left_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
+var right_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
+
 onready var available_actions : Array = [
-	WalkingAction.new(navigation_agent, Vector2(350, 350))
+	# WalkingAction.new(navigation_agent, Vector2(350, 350)),
+	GatherWoodAction.new()
 ]
 
-func walk_to(target: Vector2) -> void:
+func walk_to(_target: Vector2) -> void:
 	available_actions = [
-		WalkingAction.new(navigation_agent, target)
+		# WalkingAction.new(navigation_agent, target),
+		GatherWoodAction.new()
 	]
 	
 func _ready():
@@ -57,25 +62,35 @@ func _process(delta):
 	
 	if ai_plan_index == -1:
 		print("available actions ", available_actions)
-		ai_plan = AIPlanner.plan(self, available_actions, {}, {"walked": true})
+		ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true})
 		ai_plan_index = 0
 		print("generated plan: ", ai_plan)
 	else:
 		if ai_plan_index < ai_plan.size():
 			var action = ai_plan[ai_plan_index]
 			if action.is_done():
+				action.reset()
 				ai_plan_index += 1
 			else:
-				action.perform_action(self)
+				if walking_action and walking_action.is_done():
+					print("finish walking")
+					action.set_in_range()
+					walking_action.perform_action(self, delta)
+					walking_action = null
+				if action.in_range(self.position):
+					action.perform_action(self, delta)
+				elif not walking_action: # walk to target
+					walking_action = WalkingAction.new(navigation_agent, action.get_target_position())
 		else:
 			print("AI PLAN COMPLETE")
 			ai_plan_index = -1
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not visible:
 		return
-		
-	#ai_goal.perform_action(self)
+
+	if walking_action:
+		walking_action.perform_action(self, delta)
 	
 func _on_NavigationAgent2D_path_changed():
 	emit_signal("path_changed", navigation_agent.get_nav_path())

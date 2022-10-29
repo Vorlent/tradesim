@@ -1,15 +1,18 @@
 extends Node
+
+class_name WalkingSprite
+
 var up_sprite : AnimatedSprite
 var down_sprite : AnimatedSprite
 var human
 var active_sprite : AnimatedSprite
 
 # Constructor
-func _init(human, up_sprite : AnimatedSprite, down_sprite : AnimatedSprite):
-	self.human = human
-	self.up_sprite = up_sprite
-	self.down_sprite = down_sprite
-	self.active_sprite = up_sprite
+func _init(human_, up_sprite_ : AnimatedSprite, down_sprite_ : AnimatedSprite):
+	self.human = human_
+	self.up_sprite = up_sprite_
+	self.down_sprite = down_sprite_
+	self.active_sprite = up_sprite_
 
 func start_walking():
 	# set animation based on motion

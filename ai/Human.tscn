@@ -73,7 +73,14 @@ shape = SubResource( 11 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0
 target_desired_distance = 15.0
-path_max_distance = 20.0
+path_max_distance = 10.0
 avoidance_enabled = true
+
+[node name="AILabel" type="Label" parent="."]
+margin_left = -60.0
+margin_top = -52.0
+margin_right = 60.0
+margin_bottom = -38.0
+align = 1
 
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_path_changed"]
