@@ -40,6 +40,8 @@ func spawn_object(object):
 	object_container.add_child(object)
 
 
-func _on_UI_create_plan(goal):
+func _on_UI_create_plan(ui, goal):
 	print(goal)
 	human.create_ai_plan(goal)
+	ui.agent = human
+	ui.visualize_plan(human.ai_plan)

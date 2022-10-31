@@ -50,7 +50,8 @@ func perform_action(agent, delta) -> bool:
 	if progress > 100.0:
 		gathered = true
 		progress = 100.0
-		add_item(agent)
+		if not add_item(agent):
+			return false
 	
 	agent.ai_label.text = "Gathering Wood " + Units.format_percentage(progress) + " " + inv_text
 	# do mining
@@ -59,8 +60,12 @@ func perform_action(agent, delta) -> bool:
 func add_item(agent):
 	var item_type = G.Items(agent).OAK_LOG
 	var wood_item_stack = ItemStack.new(item_type, 1)
-	agent.left_hand_item_slot.put_itemstack(wood_item_stack)
-	inv_text = str(agent.left_hand_item_slot)
+	if agent.left_hand_item_slot.put_itemstack(wood_item_stack):
+		 # update UI ...
+		inv_text = str(agent.left_hand_item_slot)
+		return true
+	else:
+		return false
 
 func _to_string():
 	return "GatherWoodAction"

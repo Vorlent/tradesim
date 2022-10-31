@@ -60,8 +60,9 @@ func perform_action(agent, delta) -> bool:
 func add_item(agent):
 	var item_type = target_object.harvestable_crop
 	var crop_item_stack = ItemStack.new(item_type, 1)
-	agent.left_hand_item_slot.put_itemstack(crop_item_stack)
+	#agent.left_hand_item_slot.put_itemstack(crop_item_stack)
+	agent.inventory.put_itemstack(crop_item_stack)
 	inv_text = str(agent.left_hand_item_slot)
 
 func _to_string():
-	return "GatherWoodAction"
+	return "GatherCropAction"

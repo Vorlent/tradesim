@@ -10,6 +10,12 @@ func _init(item : Item, amount : int):
 	self.item_type = item
 	self.current_amount = amount
 
+func split(amount_: int) -> ItemStack:
+	if current_amount < amount_:
+		amount_ = current_amount
+	self.current_amount -= amount_
+	return get_script().new(self.item_type, amount_)
+
 func add_amount(amount):
 	self.amount += amount
 

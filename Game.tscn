@@ -44,4 +44,5 @@ script = ExtResource( 2 )
 navpoly = SubResource( 1 )
 
 [connection signal="create_plan" from="UI" to="Game" method="_on_UI_create_plan"]
+[connection signal="dirty_inventory" from="Game/YSort/Human" to="UI" method="_on_dirty_inventory"]
 [connection signal="path_changed" from="Game/YSort/Human" to="Game" method="_on_Human_path_changed"]

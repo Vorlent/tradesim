@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://ai/Human.gd"
 }, {
 "base": "Reference",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://ai/Inventory.gd"
+}, {
+"base": "Reference",
 "class": "Item",
 "language": "GDScript",
 "path": "res://ai/Item.gd"
@@ -103,6 +108,7 @@ _global_script_class_icons={
 "GatherCropAction": "",
 "GatherWoodAction": "",
 "Human": "",
+"Inventory": "",
 "Item": "",
 "ItemMaterial": "",
 "ItemSlot": "",

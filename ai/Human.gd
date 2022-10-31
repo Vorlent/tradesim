@@ -4,13 +4,14 @@ class_name Human
 
 signal target_reached
 signal path_changed(path)
+signal dirty_inventory(inventory)
 
 export (int) var MAX_SPEED = 100
 
 var velocity = Vector2()
 onready var navigation_agent = $NavigationAgent2D
 onready var ai_label : Label = $AILabel
-var walking_sprite : WalkingSprite
+onready var walking_sprite : WalkingSprite = WalkingSprite.new(self, $RightUp, $RightDown)
 
 var did_arrive : bool = true
 
@@ -23,6 +24,8 @@ var game # reference to the main scene
 
 var left_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
 var right_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
+
+onready var inventory : Inventory = Inventory.new()
 
 onready var available_actions : Array = [
 	# WalkingAction.new(navigation_agent, Vector2(350, 350)),
@@ -38,7 +41,9 @@ func walk_to(_target: Vector2) -> void:
 	pass
 	
 func _ready():
-	walking_sprite = WalkingSprite.new(self, $RightUp, $RightDown)
+	#left_hand_item_slot.connect("mark_dirty", self, "_on_ItemSlot_dirty")
+	#right_hand_item_slot.connect("mark_dirty", self, "_on_ItemSlot_dirty")
+	inventory.connect("mark_dirty", self, "_on_ItemSlot_dirty")
 
 func get_input():
 	velocity = Vector2()
@@ -105,3 +110,6 @@ func _physics_process(delta):
 	
 func _on_NavigationAgent2D_path_changed():
 	emit_signal("path_changed", navigation_agent.get_nav_path())
+
+func _on_ItemSlot_dirty(item_slot):
+	emit_signal("dirty_inventory", self)
