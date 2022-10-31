@@ -38,7 +38,6 @@ func divisibility(divisible_ : bool):
 
 # rounded down
 func amount_from_weight(specified_weight : float) -> int:
-	print("weight: " , weight , " specified_weight " , specified_weight, "result: ", weight / specified_weight)
 	return int(floor(specified_weight / weight))
 
 # rounded down

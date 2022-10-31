@@ -8,13 +8,10 @@ static func plan(agent, available_actions, world_state, goal) -> Array:
 	for action in available_actions:
 		if action.check_procedural_precondition(agent):
 			usable_actions[action] = true
-	
-	#print("usable_actions ", usable_actions)
 
 	var leaves : Array = []
 	var start : AIPlanNode = AIPlanNode.new(null, 0, world_state, null)
 	var success : bool = build_graph(start, leaves, usable_actions, goal)
-	#print("leaves ", leaves, " success ", success)
 
 	if not success:
 		return [] # no plan
@@ -45,7 +42,6 @@ static func build_graph(parent : AIPlanNode, leaves : Array, usable_actions : Di
 	var found_one : bool = false
 	for action in usable_actions.keys(): # Process all usable actions
 		if subset_of(action.preconditions, parent.state):
-			print(action)
 			var current_state : Dictionary = populate_state(parent.state, {}, action.effects)
 			var node : AIPlanNode = AIPlanNode.new(parent, parent.running_cost + action.cost, current_state, action)
 			if subset_of(goal, current_state): # goal has been satisfied by current state
@@ -61,7 +57,12 @@ static func build_graph(parent : AIPlanNode, leaves : Array, usable_actions : Di
 # Checks if all elements in the subset are part of the superset
 static func subset_of(subset : Dictionary, superset : Dictionary) -> bool:
 	for t in subset.keys():
-		if not superset.has(t) or subset[t] != superset[t]:
+		# a false element in the subset means the element is not supposed
+		# to be present in the super set
+		if subset[t] and not superset.has(t):
+			return false
+		# false if both elements exist but their boolean value differs
+		if superset.has(t) and subset[t] != superset[t]:
 			return false
 	return true
 

@@ -148,7 +148,7 @@ func generate_tilemap():
 			outline.append(start)
 			array_of_outlines.append(outline)
 		if not current:
-			print("FAILED TO REACH START!!")
+			print("FAILED TO REACH START!")
 	
 	var colors = [Color(1.0, 0.0, 0.0, 1.0),
 		  Color(0.0, 1.0, 0.0, 1.0),

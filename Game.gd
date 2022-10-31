@@ -38,3 +38,8 @@ func spawn_object(object):
 	if object.has_method("added_to_game"):
 		object.added_to_game(self)
 	object_container.add_child(object)
+
+
+func _on_UI_create_plan(goal):
+	print(goal)
+	human.create_ai_plan(goal)

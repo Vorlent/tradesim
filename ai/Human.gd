@@ -35,8 +35,7 @@ func walk_to(_target: Vector2) -> void:
 	#	WalkingAction.new(navigation_agent, target),
 	#	GatherWoodAction.new()
 	#]
-	ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true, "has_crop": true})
-	ai_plan_index = 0
+	pass
 	
 func _ready():
 	walking_sprite = WalkingSprite.new(self, $RightUp, $RightDown)
@@ -60,14 +59,22 @@ func get_input():
 		velocity.x += x_magnitude
 	velocity = velocity.normalized() * MAX_SPEED
 
+func create_ai_plan(goal):
+	#print("available actions ", available_actions)
+	ai_plan = AIPlanner.plan(self, available_actions, {}, goal)
+	ai_plan_index = 0
+	print("generated plan: ", ai_plan)
+
+func stop_ai_plan():
+	#print("available actions ", available_actions)
+	ai_plan_index = -1
+	#print("generated plan: ", ai_plan)
+
 func _process(delta):
 	# generate plan
 	
 	if ai_plan_index == -1:
-		#print("available actions ", available_actions)
-		ai_plan = AIPlanner.plan(self, available_actions, {}, {"has_wood": true, "has_crop": true})
-		ai_plan_index = 0
-		#print("generated plan: ", ai_plan)
+		#create_ai_plan()
 		pass
 	else:
 		if ai_plan_index < ai_plan.size():
