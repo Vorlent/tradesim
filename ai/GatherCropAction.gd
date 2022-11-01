@@ -10,8 +10,6 @@ var time_spent : float = 0
 var gathering_duration : float = 2
 var target_object
 
-var inv_text = ""
-
 func _init():
 	add_effect("has_crop", true)
 	cost = 9.0
@@ -53,7 +51,7 @@ func perform_action(agent, delta) -> bool:
 		progress = 100.0
 		add_item(agent)
 	
-	agent.ai_label.text = "Gathering Crop " + Units.format_percentage(progress) + " " + inv_text
+	agent.ai_label.text = "Gathering Crop " + Units.format_percentage(progress)
 	# do mining
 	return true
 
@@ -62,7 +60,6 @@ func add_item(agent):
 	var crop_item_stack = ItemStack.new(item_type, 1)
 	#agent.left_hand_item_slot.put_itemstack(crop_item_stack)
 	agent.inventory.put_itemstack(crop_item_stack)
-	inv_text = str(agent.left_hand_item_slot)
 
 func _to_string():
 	return "GatherCropAction"

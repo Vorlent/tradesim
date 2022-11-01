@@ -14,10 +14,18 @@ var stackable : bool = true
 var divisible : bool = false # whether something can be split up arbitrarilyy
 var min_quantity : int = 1 # smallest quantity that something can be split up
 
+var inventory_icon : Texture
+
 # associated icon?
 
 func _init(name_ : String):
 	self.name = name_
+
+func get_inventory_icon() -> Texture:
+	if not inventory_icon:
+		inventory_icon = load("res://assets/textures/crops/" + name + ".tres")
+	return inventory_icon
+	
 
 func material_by_volume(material : ItemMaterial, specified_volume : float):
 	var amount = material.amount_from_volume(specified_volume)

@@ -41,6 +41,12 @@ func _on_dirty_inventory(agent):
 	print(agent.inventory)
 	item_list.clear()
 	for item in agent.inventory.unnamed_item_slots:
-		item_list.add_item(str(item.item_stack.item_type))
+		
+		var text = Units.format_weight(item.item_stack.current_weight()) \
+			+ " " + Units.format_volume(item.item_stack.current_volume())
+		
+		item_list.add_item(text, item.item_stack.item_type.get_inventory_icon())
+		var index = item_list.get_item_count() - 1
+		item_list.set_item_tooltip(index, str(item.item_stack))
 	print("DIRTY INVENTORY")
 	pass # Replace with function body.

@@ -1,83 +1,26 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://terrain/Crop.gd" type="Script" id=1]
-[ext_resource path="res://terrain/crop_spritesheet.png" type="Texture" id=2]
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 32, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 32, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 48, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 48, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 64, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 64, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 80, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 80, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 96, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 96, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 112, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 112, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 128, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 128, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 144, 16, 16 )
+[ext_resource path="res://assets/textures/crops/CROP_EGGPLANT.tres" type="Texture" id=2]
+[ext_resource path="res://assets/textures/crops/CROP_TURNIP.tres" type="Texture" id=3]
+[ext_resource path="res://assets/textures/crops/CROP_ROSE.tres" type="Texture" id=4]
+[ext_resource path="res://assets/textures/crops/CROP_CUCUMBER.tres" type="Texture" id=5]
+[ext_resource path="res://assets/textures/crops/CROP_LEMON.tres" type="Texture" id=6]
+[ext_resource path="res://assets/textures/crops/CROP_PINEAPPLE.tres" type="Texture" id=7]
+[ext_resource path="res://assets/textures/crops/CROP_RICE.tres" type="Texture" id=8]
+[ext_resource path="res://assets/textures/crops/CROP_WHEAT.tres" type="Texture" id=9]
+[ext_resource path="res://assets/textures/crops/CROP_GRAPES.tres" type="Texture" id=10]
+[ext_resource path="res://assets/textures/crops/CROP_STRAWBERRY.tres" type="Texture" id=11]
+[ext_resource path="res://assets/textures/crops/CROP_CASSAVA.tres" type="Texture" id=12]
+[ext_resource path="res://assets/textures/crops/CROP_POTATO.tres" type="Texture" id=13]
+[ext_resource path="res://assets/textures/crops/CROP_COFFEE.tres" type="Texture" id=14]
+[ext_resource path="res://assets/textures/crops/CROP_AVOCADO.tres" type="Texture" id=15]
+[ext_resource path="res://assets/textures/crops/CROP_ORANGE.tres" type="Texture" id=16]
+[ext_resource path="res://assets/textures/crops/CROP_CORN.tres" type="Texture" id=17]
+[ext_resource path="res://assets/textures/crops/CROP_TULIP.tres" type="Texture" id=18]
+[ext_resource path="res://assets/textures/crops/CROP_TOMATO.tres" type="Texture" id=19]
+[ext_resource path="res://assets/textures/crops/CROP_MELON.tres" type="Texture" id=20]
+[ext_resource path="res://assets/textures/crops/CROP_SUNFLOWER.tres" type="Texture" id=21]
 
 [node name="Crop" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -85,83 +28,83 @@ script = ExtResource( 1 )
 [node name="SpriteContainer" type="Node2D" parent="."]
 
 [node name="CROP_TURNIP" type="Sprite" parent="SpriteContainer"]
-texture = SubResource( 14 )
+texture = ExtResource( 3 )
 
 [node name="CROP_ROSE" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 4 )
+texture = ExtResource( 4 )
 
 [node name="CROP_CUCUMBER" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 15 )
+texture = ExtResource( 5 )
 
 [node name="CROP_TULIP" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 5 )
+texture = ExtResource( 18 )
 
 [node name="CROP_TOMATO" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 16 )
+texture = ExtResource( 19 )
 
 [node name="CROP_MELON" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 6 )
+texture = ExtResource( 20 )
 
 [node name="CROP_EGGPLANT" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 17 )
+texture = ExtResource( 2 )
 
 [node name="CROP_LEMON" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="CROP_PINEAPPLE" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CROP_RICE" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="CROP_WHEAT" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 18 )
+texture = ExtResource( 9 )
 
 [node name="CROP_GRAPES" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 19 )
+texture = ExtResource( 10 )
 
 [node name="CROP_STRAWBERRY" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="CROP_CASSAVA" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 20 )
+texture = ExtResource( 12 )
 
 [node name="CROP_POTATO" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 11 )
+texture = ExtResource( 13 )
 
 [node name="CROP_COFFEE" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 21 )
+texture = ExtResource( 14 )
 
 [node name="CROP_AVOCADO" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 22 )
+texture = ExtResource( 15 )
 
 [node name="CROP_ORANGE" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 12 )
+texture = ExtResource( 16 )
 
 [node name="CROP_CORN" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 13 )
+texture = ExtResource( 17 )
 
 [node name="CROP_SUNFLOWER" type="Sprite" parent="SpriteContainer"]
 visible = false
-texture = SubResource( 13 )
+texture = ExtResource( 21 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
