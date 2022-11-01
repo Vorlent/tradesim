@@ -8,12 +8,12 @@ script = ExtResource( 1 )
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 829.0
+margin_left = 803.0
 
 [node name="Tabs" type="TabContainer" parent="Panel"]
 margin_left = 9.0
 margin_top = 6.0
-margin_right = 185.0
+margin_right = 212.0
 margin_bottom = 593.0
 
 [node name="AI" type="Panel" parent="Panel/Tabs"]
@@ -25,17 +25,17 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="GatherWood" type="CheckButton" parent="Panel/Tabs/AI"]
-margin_left = -1.0
-margin_top = 7.0
-margin_right = 171.0
-margin_bottom = 47.0
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 182.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 133, 20 )
 text = "Gather Wood"
 
 [node name="GatherCrop" type="CheckButton" parent="Panel/Tabs/AI"]
-margin_left = 3.0
+margin_left = 10.0
 margin_top = 43.0
-margin_right = 171.0
+margin_right = 178.0
 margin_bottom = 83.0
 rect_pivot_offset = Vector2( 133, 20 )
 text = "Gather Crop"
@@ -43,14 +43,14 @@ text = "Gather Crop"
 [node name="CreatePlan" type="Button" parent="Panel/Tabs/AI"]
 margin_left = 5.0
 margin_top = 93.0
-margin_right = 159.0
+margin_right = 191.0
 margin_bottom = 123.0
 text = "Create AI Plan"
 
 [node name="ActionList" type="ItemList" parent="Panel/Tabs/AI"]
 margin_left = 6.0
 margin_top = 129.0
-margin_right = 160.0
+margin_right = 190.0
 margin_bottom = 372.0
 
 [node name="Inventory" type="Panel" parent="Panel/Tabs"]
@@ -63,10 +63,19 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="ItemList" type="ItemList" parent="Panel/Tabs/Inventory"]
-margin_left = 7.0
-margin_top = 9.0
-margin_right = 160.0
+margin_left = 5.0
+margin_top = 8.0
+margin_right = 190.0
 margin_bottom = 546.0
+
+[node name="Status" type="Panel" parent="Panel/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [connection signal="toggled" from="Panel/Tabs/AI/GatherWood" to="." method="_on_GatherWood_toggled"]
 [connection signal="toggled" from="Panel/Tabs/AI/GatherCrop" to="." method="_on_GatherCrop_toggled"]

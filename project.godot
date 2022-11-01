@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://ai/Human.gd"
 }, {
 "base": "Reference",
+"class": "HumanStatus",
+"language": "GDScript",
+"path": "res://ai/HumanStatus.gd"
+}, {
+"base": "Reference",
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://ai/Inventory.gd"
@@ -98,6 +103,11 @@ _global_script_classes=[ {
 "class": "WalkingSprite",
 "language": "GDScript",
 "path": "res://ai/WalkingSprite.gd"
+}, {
+"base": "Reference",
+"class": "WorldClock",
+"language": "GDScript",
+"path": "res://world/WorldClock.gd"
 } ]
 _global_script_class_icons={
 "AIAction": "",
@@ -108,6 +118,7 @@ _global_script_class_icons={
 "GatherCropAction": "",
 "GatherWoodAction": "",
 "Human": "",
+"HumanStatus": "",
 "Inventory": "",
 "Item": "",
 "ItemMaterial": "",
@@ -117,7 +128,8 @@ _global_script_class_icons={
 "TerrainGenerator": "",
 "Units": "",
 "WalkingAction": "",
-"WalkingSprite": ""
+"WalkingSprite": "",
+"WorldClock": ""
 }
 
 [application]
