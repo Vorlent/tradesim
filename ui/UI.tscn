@@ -14,7 +14,7 @@ margin_left = 803.0
 margin_left = 9.0
 margin_top = 6.0
 margin_right = 212.0
-margin_bottom = 593.0
+margin_bottom = 553.0
 
 [node name="AI" type="Panel" parent="Panel/Tabs"]
 anchor_right = 1.0
@@ -77,6 +77,28 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="BottomBar" type="Panel" parent="."]
+margin_top = 564.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="TimeLabel" type="Label" parent="BottomBar"]
+margin_top = 1.0
+margin_right = 121.0
+margin_bottom = 36.0
+text = "1st January 0 00:00"
+valign = 1
+
+[node name="SpeedSlider" type="HSlider" parent="BottomBar"]
+margin_left = 130.0
+margin_top = 10.0
+margin_right = 191.0
+margin_bottom = 26.0
+min_value = 2.0
+max_value = 4.0
+value = 3.0
+
 [connection signal="toggled" from="Panel/Tabs/AI/GatherWood" to="." method="_on_GatherWood_toggled"]
 [connection signal="toggled" from="Panel/Tabs/AI/GatherCrop" to="." method="_on_GatherCrop_toggled"]
 [connection signal="pressed" from="Panel/Tabs/AI/CreatePlan" to="." method="_on_CreatePlan_pressed"]
+[connection signal="value_changed" from="BottomBar/SpeedSlider" to="." method="_on_SpeedSlider_value_changed"]

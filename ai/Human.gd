@@ -27,6 +27,8 @@ var right_hand_item_slot = ItemSlot.new(5, Units.kg(10), Units.dm3(250))
 
 onready var inventory : Inventory = Inventory.new()
 
+var human_status : HumanStatus
+
 onready var available_actions : Array = [
 	# WalkingAction.new(navigation_agent, Vector2(350, 350)),
 	GatherWoodAction.new(),
@@ -39,6 +41,9 @@ func walk_to(_target: Vector2) -> void:
 	#	GatherWoodAction.new()
 	#]
 	pass
+
+func set_game(game):
+	human_status = HumanStatus.new(game)
 	
 func _ready():
 	#left_hand_item_slot.connect("mark_dirty", self, "_on_ItemSlot_dirty")
@@ -76,6 +81,8 @@ func stop_ai_plan():
 	#print("generated plan: ", ai_plan)
 
 func _process(delta):
+	
+	human_status._process(delta)
 	# generate plan
 	
 	if ai_plan_index == -1:

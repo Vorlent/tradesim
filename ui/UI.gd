@@ -6,19 +6,23 @@ onready var gather_wood_button : CheckButton = $Panel/Tabs/AI/GatherWood
 onready var gather_crop_button : CheckButton = $Panel/Tabs/AI/GatherCrop
 onready var action_list : ItemList = $Panel/Tabs/AI/ActionList
 onready var item_list : ItemList = $Panel/Tabs/Inventory/ItemList
+onready var time_label : Label = $BottomBar/TimeLabel
+onready var speed_slider : HSlider = $BottomBar/SpeedSlider
 
 var has_wood : bool = true
 var has_crop : bool = true
 var agent
+var game
 
 func _ready():
 	gather_wood_button.pressed = has_wood
 	gather_crop_button.pressed = has_crop
-	pass # Replace with function body.
+
+func _process(delta):
+	time_label.text = str(game.world_clock)
 
 func _on_GatherWood_toggled(button_pressed):
 	has_wood = button_pressed
-
 
 func _on_GatherCrop_toggled(button_pressed):
 	has_crop = button_pressed
@@ -36,7 +40,6 @@ func visualize_plan(plan):
 	for action in plan:
 		action_list.add_item(str(action))
 
-
 func _on_dirty_inventory(agent):
 	print(agent.inventory)
 	item_list.clear()
@@ -49,4 +52,7 @@ func _on_dirty_inventory(agent):
 		var index = item_list.get_item_count() - 1
 		item_list.set_item_tooltip(index, str(item.item_stack))
 	print("DIRTY INVENTORY")
-	pass # Replace with function body.
+
+func _on_SpeedSlider_value_changed(value):
+	var speed_level = int(value)
+	game.world_clock.set_speed_level(speed_level)

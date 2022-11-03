@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://terrain/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://ai/Human.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/WorldClock.gd" type="Script" id=6]
+[ext_resource path="res://Root.gd" type="Script" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -159, 433, -192, 418, -95, 370, -415, 1329, -447, 1314, -414, 1298, -415, 1233, -447, 1217, -415, 1202, -254, 737, -286, 721, -254, 706, -318, 897, -351, 881, -287, 850, -415, 1137, -479, 1105, -448, 1090, -448, 1056, -479, 1041, -447, 1025, 1, 1601, -446, 1377, -415, 1362, -447, 993, -479, 977, 321, 161, 1602, 802, 33, 306, -97, 562, -223, 497, -192, 482, -128, 353, 1, 289, -446, 1281, -415, 1266, -288, 785, -318, 770, -416, 1169, -447, 1153, -447, 1345, -447, 1249, -318, 833, -287, 818, -478, 1009, -447, 1185, -319, 801, -223, 465, -285, 689, -159, 625, -126, 642, -95, 593, -125, 577, -96, 625, -125, 609, -478, 1073 )
@@ -12,6 +14,7 @@ polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 
 outlines = [ PoolVector2Array( 33, 306, 1, 289, -128, 353, -95, 370, -192, 418, -159, 433, -223, 465, -192, 482, -223, 497, -97, 562, -125, 577, -95, 593, -125, 609, -96, 625, -126, 642, -159, 625, -285, 689, -254, 706, -286, 721, -254, 737, -318, 770, -288, 785, -319, 801, -287, 818, -318, 833, -287, 850, -351, 881, -318, 897, -479, 977, -447, 993, -478, 1009, -447, 1025, -479, 1041, -448, 1056, -478, 1073, -448, 1090, -479, 1105, -415, 1137, -447, 1153, -416, 1169, -447, 1185, -415, 1202, -447, 1217, -415, 1233, -447, 1249, -415, 1266, -446, 1281, -414, 1298, -447, 1314, -415, 1329, -447, 1345, -415, 1362, -446, 1377, 1, 1601, 1602, 802, 321, 161 ) ]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="UI" parent="." instance=ExtResource( 5 )]
 
@@ -42,6 +45,9 @@ script = ExtResource( 2 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Game"]
 navpoly = SubResource( 1 )
+
+[node name="WorldClock" type="Node" parent="Game"]
+script = ExtResource( 6 )
 
 [connection signal="create_plan" from="UI" to="Game" method="_on_UI_create_plan"]
 [connection signal="dirty_inventory" from="Game/YSort/Human" to="UI" method="_on_dirty_inventory"]

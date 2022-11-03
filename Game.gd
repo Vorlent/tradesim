@@ -7,13 +7,13 @@ onready var camera = $Camera2D
 onready var navigation_polygon = $NavigationPolygonInstance.navpoly
 onready var object_container = $YSort
 
-onready var world_clock : WorldClock = WorldClock.new()
+onready var world_clock : WorldClock = $WorldClock
 
 var generator
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	human.game = self
+	human.set_game(self)
 	camera.position = human.position
 	_proc_generation()
 
