@@ -17,6 +17,7 @@ margin_right = 212.0
 margin_bottom = 553.0
 
 [node name="AI" type="Panel" parent="Panel/Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -69,13 +70,172 @@ margin_right = 190.0
 margin_bottom = 546.0
 
 [node name="Status" type="Panel" parent="Panel/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+
+[node name="HealthLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 189.0
+margin_bottom = 22.0
+text = "Health"
+
+[node name="HealProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 102.0
+margin_top = 7.0
+margin_right = 190.0
+margin_bottom = 21.0
+
+[node name="AgeLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 7.0
+margin_top = 24.0
+margin_right = 190.0
+margin_bottom = 38.0
+text = "Age"
+
+[node name="AgeValueLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 104.0
+margin_top = 24.0
+margin_right = 190.0
+margin_bottom = 38.0
+text = "5 years"
+align = 1
+
+[node name="OverburdenedLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 40.0
+margin_right = 189.0
+margin_bottom = 54.0
+text = "Overburdened"
+
+[node name="OverburdenedProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 102.0
+margin_top = 39.0
+margin_right = 190.0
+margin_bottom = 53.0
+
+[node name="ExhaustionLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 7.0
+margin_top = 57.0
+margin_right = 190.0
+margin_bottom = 71.0
+text = "Exhaustion"
+
+[node name="ExhaustionProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 102.0
+margin_top = 58.0
+margin_right = 190.0
+margin_bottom = 72.0
+
+[node name="HungerLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 75.0
+margin_right = 189.0
+margin_bottom = 89.0
+text = "Hunger"
+
+[node name="HungerProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 102.0
+margin_top = 76.0
+margin_right = 190.0
+margin_bottom = 90.0
+
+[node name="ThirstLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 95.0
+margin_right = 189.0
+margin_bottom = 109.0
+text = "Thirst"
+
+[node name="ThirstProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 96.0
+margin_right = 191.0
+margin_bottom = 110.0
+
+[node name="SleepinessLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 111.0
+margin_right = 189.0
+margin_bottom = 125.0
+text = "Sleepiness"
+
+[node name="SleepinessProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 113.0
+margin_right = 191.0
+margin_bottom = 127.0
+
+[node name="BodyTemperatureLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 130.0
+margin_right = 124.0
+margin_bottom = 144.0
+text = "Body Temp."
+
+[node name="BodyTemperatureValueLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 131.0
+margin_right = 190.0
+margin_bottom = 145.0
+text = "38 °C"
+align = 1
+
+[node name="InjuredLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 147.0
+margin_right = 189.0
+margin_bottom = 161.0
+text = "Injured"
+
+[node name="InjuredProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 147.0
+margin_right = 191.0
+margin_bottom = 161.0
+
+[node name="PainLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 162.0
+margin_right = 38.0
+margin_bottom = 176.0
+text = "Pain"
+
+[node name="PainProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 162.0
+margin_right = 191.0
+margin_bottom = 176.0
+
+[node name="FeverLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 7.0
+margin_top = 175.0
+margin_right = 43.0
+margin_bottom = 189.0
+text = "Fever"
+
+[node name="FeverProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 177.0
+margin_right = 191.0
+margin_bottom = 191.0
+
+[node name="ColdLabel" type="Label" parent="Panel/Tabs/Status"]
+margin_left = 6.0
+margin_top = 189.0
+margin_right = 189.0
+margin_bottom = 203.0
+text = "Cold"
+
+[node name="ColdProgressBar" type="ProgressBar" parent="Panel/Tabs/Status"]
+margin_left = 103.0
+margin_top = 191.0
+margin_right = 191.0
+margin_bottom = 205.0
 
 [node name="BottomBar" type="Panel" parent="."]
 margin_top = 564.0
@@ -95,7 +255,7 @@ margin_top = 10.0
 margin_right = 191.0
 margin_bottom = 26.0
 min_value = 2.0
-max_value = 4.0
+max_value = 5.0
 value = 3.0
 
 [connection signal="toggled" from="Panel/Tabs/AI/GatherWood" to="." method="_on_GatherWood_toggled"]

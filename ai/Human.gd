@@ -43,6 +43,7 @@ func walk_to(_target: Vector2) -> void:
 	pass
 
 func set_game(game):
+	self.game = game
 	human_status = HumanStatus.new(game)
 	
 func _ready():
@@ -81,7 +82,6 @@ func stop_ai_plan():
 	#print("generated plan: ", ai_plan)
 
 func _process(delta):
-	
 	human_status._process(delta)
 	# generate plan
 	

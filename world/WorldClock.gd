@@ -16,6 +16,9 @@ var NORMAL_SPEED : float = days(1) / minutes(12)
 # 1 ingame day per 3 real minutes
 var FAST_SPEED : float = days(1) / minutes(3)
 
+# 1 ingame day per 1 real minutes
+var VERY_FAST_SPEED : float = days(1) / minutes(1)
+
 # I don't know enough about history to pick a specific date
 # so I will pick the date almost nobody who invents a new calendar picks.
 var year : int = 0
@@ -40,7 +43,7 @@ func get_min_speed_level():
 	return 2
 
 func get_max_speed_level():
-	return 4
+	return 5
 
 func set_speed_level(speed_level):
 	if speed_level == 1:
@@ -51,6 +54,8 @@ func set_speed_level(speed_level):
 		time_scale = NORMAL_SPEED
 	elif speed_level == 4:
 		time_scale = FAST_SPEED
+	elif speed_level == 5:
+		time_scale = VERY_FAST_SPEED
 	else:
 		time_scale = NORMAL_SPEED
 
@@ -102,6 +107,28 @@ func format_day(day : int):
 
 func _to_string():
 	return "%s %s %d %02d:%02d" % [format_day(day), month_name(month), year, hour, minute]
+	
+static func format_time(time : float) -> String:
+	if time < minutes(1):
+		return "%d sec." % (time / seconds(1))
+	if time < hours(1):
+		return "%d min" % int(time / minutes(1))
+	if time < days(1):
+		return "%d h" % int(time / hours(1))
+	if time < months(1):
+		if int(time / days(1)) == 1:
+			return "%d day" % int(time / days(1))
+		else:
+			return "%d days" % int(time / days(1))
+	if time < years(1):
+		return "%d months" % int(time / months(1))
+	return "%d years" % int(time / years(1))
+
+static func years(amount : float) -> float:
+	return amount * MONTHS_PER_YEAR * DAYS_PER_MONTH * HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE
+
+static func months(amount : float) -> float:
+	return amount * DAYS_PER_MONTH * HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE
 
 static func days(amount : float) -> float:
 	return amount * HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE

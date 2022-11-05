@@ -20,6 +20,24 @@ func _ready():
 
 func _process(delta):
 	time_label.text = str(game.world_clock)
+	if game.human:
+		var human_status = game.human.human_status
+		
+		$Panel/Tabs/Status/HealProgressBar.value = human_status.health * 100.0
+		$Panel/Tabs/Status/OverburdenedProgressBar.value = human_status.overburdened * 100.0
+		$Panel/Tabs/Status/ExhaustionProgressBar.value = human_status.exhaustion * 100.0
+		$Panel/Tabs/Status/HungerProgressBar.value = human_status.hunger * 100.0
+		$Panel/Tabs/Status/ThirstProgressBar.value = human_status.thirst * 100.0
+		$Panel/Tabs/Status/SleepinessProgressBar.value = human_status.sleepiness * 100.0
+		$Panel/Tabs/Status/InjuredProgressBar.value = human_status.injured * 100.0
+		$Panel/Tabs/Status/PainProgressBar.value = human_status.pain * 100.0
+		$Panel/Tabs/Status/FeverProgressBar.value = human_status.fever * 100.0
+		$Panel/Tabs/Status/ColdProgressBar.value = human_status.cold * 100.0
+		
+		$Panel/Tabs/Status/AgeValueLabel.text = WorldClock.format_time(human_status.age)
+		
+		# $Panel/Tabs/Status/BodyTemperature.value = human_status.body_temperature
+		# $Panel/Tabs/Status/BodyTemperature.value = human_status.age
 
 func _on_GatherWood_toggled(button_pressed):
 	has_wood = button_pressed

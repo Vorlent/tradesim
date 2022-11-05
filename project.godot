@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://terrain/TerrainGenerator.gd"
 }, {
+"base": "Reference",
+"class": "TimedProgress",
+"language": "GDScript",
+"path": "res://ai/TimedProgress.gd"
+}, {
 "base": "Object",
 "class": "Units",
 "language": "GDScript",
@@ -126,6 +131,7 @@ _global_script_class_icons={
 "ItemStack": "",
 "MiningAction": "",
 "TerrainGenerator": "",
+"TimedProgress": "",
 "Units": "",
 "WalkingAction": "",
 "WalkingSprite": "",
