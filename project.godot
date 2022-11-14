@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://ai/MiningAction.gd"
 }, {
 "base": "Reference",
+"class": "SleepAction",
+"language": "GDScript",
+"path": "res://ai/SleepAction.gd"
+}, {
+"base": "Reference",
 "class": "TerrainGenerator",
 "language": "GDScript",
 "path": "res://terrain/TerrainGenerator.gd"
@@ -130,6 +135,7 @@ _global_script_class_icons={
 "ItemSlot": "",
 "ItemStack": "",
 "MiningAction": "",
+"SleepAction": "",
 "TerrainGenerator": "",
 "TimedProgress": "",
 "Units": "",

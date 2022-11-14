@@ -32,7 +32,8 @@ var human_status : HumanStatus
 onready var available_actions : Array = [
 	# WalkingAction.new(navigation_agent, Vector2(350, 350)),
 	GatherWoodAction.new(),
-	GatherCropAction.new()
+	GatherCropAction.new(),
+	SleepAction.new()
 ]
 
 func walk_to(_target: Vector2) -> void:
@@ -100,7 +101,7 @@ func _process(delta):
 					action.set_in_range()
 					walking_action.perform_action(self, delta)
 					walking_action = null
-				if action.in_range(self.position):
+				if not action.requires_in_range() or action.in_range(self.position):
 					action.perform_action(self, delta)
 				elif not walking_action: # walk to target
 					walking_action = WalkingAction.new(navigation_agent, action.get_target_position())

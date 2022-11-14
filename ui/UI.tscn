@@ -17,7 +17,6 @@ margin_right = 212.0
 margin_bottom = 553.0
 
 [node name="AI" type="Panel" parent="Panel/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -41,18 +40,26 @@ margin_bottom = 83.0
 rect_pivot_offset = Vector2( 133, 20 )
 text = "Gather Crop"
 
+[node name="Sleep" type="CheckButton" parent="Panel/Tabs/AI"]
+margin_left = 10.0
+margin_top = 78.0
+margin_right = 178.0
+margin_bottom = 118.0
+rect_pivot_offset = Vector2( 133, 20 )
+text = "Sleep"
+
 [node name="CreatePlan" type="Button" parent="Panel/Tabs/AI"]
 margin_left = 5.0
-margin_top = 93.0
+margin_top = 124.0
 margin_right = 191.0
-margin_bottom = 123.0
+margin_bottom = 154.0
 text = "Create AI Plan"
 
 [node name="ActionList" type="ItemList" parent="Panel/Tabs/AI"]
 margin_left = 6.0
-margin_top = 129.0
+margin_top = 164.0
 margin_right = 190.0
-margin_bottom = 372.0
+margin_bottom = 407.0
 
 [node name="Inventory" type="Panel" parent="Panel/Tabs"]
 visible = false
@@ -70,6 +77,7 @@ margin_right = 190.0
 margin_bottom = 546.0
 
 [node name="Status" type="Panel" parent="Panel/Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -260,5 +268,6 @@ value = 3.0
 
 [connection signal="toggled" from="Panel/Tabs/AI/GatherWood" to="." method="_on_GatherWood_toggled"]
 [connection signal="toggled" from="Panel/Tabs/AI/GatherCrop" to="." method="_on_GatherCrop_toggled"]
+[connection signal="toggled" from="Panel/Tabs/AI/Sleep" to="." method="_on_Sleep_toggled"]
 [connection signal="pressed" from="Panel/Tabs/AI/CreatePlan" to="." method="_on_CreatePlan_pressed"]
 [connection signal="value_changed" from="BottomBar/SpeedSlider" to="." method="_on_SpeedSlider_value_changed"]

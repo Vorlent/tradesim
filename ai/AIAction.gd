@@ -34,6 +34,9 @@ func perform_action(_human, _delta):
 func get_target_position():
 	return target_position
 
+func requires_in_range():
+	return false
+
 func in_range(_agent_position : Vector2) -> bool:
 	return target_in_range
 
