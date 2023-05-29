@@ -73,6 +73,31 @@ new savings = (1-time preference)*old savings + income - minimum living expenses
 But they also obligated themselves to provide 2 dollars of savings for 15 days.
 This means they will accumulate savings until they have 30 dollars of savings.
 
+Offtopic: A daily loanable funds market appears to be quite a ridiculous concept, doesn't it?
+But if a daily loanable funds market is the wrong duration,
+can the problem be solved by lengthening the duration?
+Maybe, a longer duration would require a larger money supply.
+As the duration approaches infinity, the necessary money supply would approach infinity,
+as all money is spent once and then saved and never spent again.
+In other words, playing around with the duration won't solve the fundamental problem.
+When economists talk about something only being possible in the short run, they essentially mean
+the gap between the opening and closing of the hypothetical loanable funds market.
+
 10% productivity means that 10 dollars of income turn into 11 dollars of income and 3 dollars of savings
 and it will take 40 days to pay the principal debt off,
-but at an interest rate of 30% it will cost 9 cent per day in interest.
+but at an interest rate of 30% it will cost 9 cent per day in interest during the first day.
+It will be rational to pay off the debt with the entirety of the discretionary income.
+
+As two people have borrowed money and are paying off debt, there are 6 dollars of payments per day.
+This means that if one person saves 2 dollars per day, the third borrower can train and increase his income.
+The question then becomes, should person #1 and #2 borrow even more to increase their income,
+or should they pay off their debt early so someone else can borrow and train?
+The training efficiency grows with each training session and the last three training sessions
+have the highest yield. So an optimal allocation of debt would imply that
+the first student should train for the full duration of 120 days and then immediately earn 20 dollars per day,
+which lets him pay off his debt in 80 days vs the 40 days it takes to pay off his first loan.
+
+The essence of this simulation boils down to deciding how much discretionary income to allocate towards
+consumption, saving or paying off debt, calculating the resulting market interest rates
+and determining the order of investment.
+
